@@ -66,6 +66,9 @@ jobs:
     needs: [build, test, deploy]
     if: always()
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Summarize Build Stage
         uses: ./
         with:
