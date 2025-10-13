@@ -1,0 +1,142 @@
+name: Example Usage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Build application
+        run: |
+          echo "🏗️ Building application..."
+          sleep 2
+          echo "Build completed successfully!"
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run unit tests
+        run: |
+          echo "🧪 Running unit tests..."
+          sleep 3
+          echo "All tests passed!"
+      
+      - name: Run integration tests
+        run: |
+          echo "🔗 Running integration tests..."
+          sleep 2
+          echo "Integration tests completed!"
+
+  deploy:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Deploy to staging
+        run: |
+          echo "🚀 Deploying to staging environment..."
+          sleep 3
+          echo "Deployment completed!"
+
+  summary:
+    name: Generate Summary
+    runs-on: ubuntu-latest
+    needs: [build, test, deploy]
+    if: always()
+    steps:
+      - name: Summarize Build Stage
+        uses: ./
+        with:
+          stage-result: ${{ needs.build.result }}
+          stage-name: 'Build'
+          stage-success-emoji: '🏗️'
+          stage-success-content: |
+            ## Build Summary
+            
+            ✅ **Application built successfully!**
+            
+            ### Details
+            - **Build Time**: ~2 seconds
+            - **Node.js Version**: 18
+            - **Status**: Ready for testing
+            
+            The application has been compiled and is ready for the next stage.
+
+      - name: Summarize Test Stage
+        uses: ./
+        with:
+          stage-result: ${{ needs.test.result }}
+          stage-name: 'Test Suite'
+          stage-success-emoji: '🧪'
+          stage-success-content: |
+            ## Test Results
+            
+            🎉 **All tests passed!**
+            
+            ### Test Summary
+            - ✅ Unit Tests: All passed
+            - ✅ Integration Tests: All passed
+            - ⏱️ Total Test Time: ~5 seconds
+            - 🎯 Code Quality: Excellent
+            
+            The application is ready for deployment.
+
+      - name: Summarize Deployment Stage
+        uses: ./
+        with:
+          stage-result: ${{ needs.deploy.result }}
+          stage-name: 'Deployment'
+          stage-success-emoji: '🚀'
+          stage-success-content: |
+            ## Deployment Summary
+            
+            🚀 **Deployment successful!**
+            
+            ### Deployment Details
+            - **Environment**: Staging
+            - **Deployment Time**: ~3 seconds
+            - **Status**: Live and healthy
+            - **Version**: ${{ github.sha }}
+            
+            The application is now available on the staging environment.
+
+      - name: Demonstrate Failure Handling
+        uses: ./
+        with:
+          stage-result: 'failure'
+          stage-name: 'Demo Failure'
+          stage-failure-emoji: '💥'
+
+      - name: Demonstrate Cancellation Handling
+        uses: ./
+        with:
+          stage-result: 'cancelled'
+          stage-name: 'Demo Cancellation'
+
+      - name: Demonstrate Unknown Status
+        uses: ./
+        with:
+          stage-result: 'skipped'
+          stage-name: 'Demo Unknown Status'

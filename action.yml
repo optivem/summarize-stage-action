@@ -2,6 +2,10 @@ name: 'Summarize Stage'
 description: 'Generate a comprehensive summary of any stage results with customizable success content'
 author: 'Optivem'
 
+branding:
+  icon: 'clipboard'
+  color: 'blue'
+
 inputs:
   stage-result:
     description: 'Result of the stage job (success, failure, cancelled, etc.)'
