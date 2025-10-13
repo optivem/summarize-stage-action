@@ -1,9 +1,7 @@
 # Summarize Stage Action
 
-[![GitHub Super-Linter](https://github.com/optivem/summarize-stage-action/actions/workflows/ci.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/ci.yml)
-[![Check dist/](https://github.com/optivem/summarize-stage-action/actions/workflows/check-dist.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/check-dist.yml)
-[![CodeQL](https://github.com/optivem/summarize-stage-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/codeql-analysis.yml)
-[![Coverage](./badges/coverage.svg)](./badges/coverage.svg)
+[![CI](https://github.com/optivem/summarize-stage-action/actions/workflows/ci.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/ci.yml)
+[![Example Usage](https://github.com/optivem/summarize-stage-action/actions/workflows/example.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/example.yml)
 
 A GitHub Action for generating comprehensive summaries of workflow stage results with customizable success content and emojis.
 
