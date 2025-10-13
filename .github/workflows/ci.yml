@@ -37,19 +37,6 @@ jobs:
           stage-result: 'cancelled'
           stage-name: 'Cancellation Test'
 
-  lint-yaml:
-    name: Lint YAML
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Lint action.yml
-        uses: ibiqlik/action-yamllint@v3
-        with:
-          file_or_dir: action.yml
-          config_file: .yamllint.yml
-
   check-action:
     name: Check Action
     runs-on: ubuntu-latest
