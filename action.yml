@@ -29,6 +29,10 @@ inputs:
     description: 'Emoji to display for unknown stage status'
     required: false
     default: '⚠️'
+  stage-content:
+    description: 'General content to display for any stage result (supports markdown)'
+    required: false
+    default: ''
   stage-success-content:
     description: 'Custom content to display on success (supports markdown)'
     required: false
@@ -49,6 +53,14 @@ runs:
         if [[ "$STAGE_RESULT" == "success" ]]; then
           echo "## ${{ inputs.stage-success-emoji }} ${{ inputs.stage-name }} Succeeded" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Add general stage content if provided
+          if [[ -n "${{ inputs.stage-content }}" ]]; then
+            cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+        ${{ inputs.stage-content }}
+        EOF
+            echo "" >> $GITHUB_STEP_SUMMARY
+          fi
           
           # Add custom success content if provided
           if [[ -n "${{ inputs.stage-success-content }}" ]]; then
