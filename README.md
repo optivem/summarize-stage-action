@@ -34,7 +34,10 @@ A GitHub Action for generating comprehensive summaries of workflow stage results
     stage-result: ${{ needs.test.result }}
     stage-name: 'Test Suite'
     stage-success-emoji: '🧪'
-    stage-success-message: 'All tests passed successfully!'
+    stage-content: |
+      ## General Information
+      
+      This stage validates the application quality and functionality.
     stage-success-content: |
       ## Test Results
       
@@ -99,8 +102,12 @@ jobs:
         with:
           stage-result: ${{ needs.build.result }}
           stage-name: 'Build'
+          stage-content: |
+            🏗️ **Build Process Overview**
+            
+            This stage compiles the application and prepares artifacts.
           stage-success-content: |
-            🏗️ **Build completed successfully**
+            ✅ **Build completed successfully**
             
             The application has been compiled and artifacts are ready for testing.
 
@@ -137,7 +144,7 @@ jobs:
 | `stage-failure-emoji` | Emoji to display for failed stages | ❌ | `❌` |
 | `stage-cancelled-emoji` | Emoji to display for cancelled stages | ❌ | `🛑` |
 | `stage-unknown-emoji` | Emoji to display for unknown stage status | ❌ | `⚠️` |
-| `stage-success-message` | Custom message to display on success (optional) | ❌ | `` |
+| `stage-content` | General content to display for any stage result (supports markdown) | ❌ | `` |
 | `stage-success-content` | Custom content to display on success (supports markdown) | ❌ | `` |
 
 ## Outputs
