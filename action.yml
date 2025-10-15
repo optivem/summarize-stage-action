@@ -29,10 +29,6 @@ inputs:
     description: 'Emoji to display for unknown stage status'
     required: false
     default: '⚠️'
-  stage-success-message:
-    description: 'Custom message to display on success (optional)'
-    required: false
-    default: ''
   stage-success-content:
     description: 'Custom content to display on success (supports markdown)'
     required: false
@@ -53,12 +49,6 @@ runs:
         if [[ "$STAGE_RESULT" == "success" ]]; then
           echo "## ${{ inputs.stage-success-emoji }} ${{ inputs.stage-name }} Succeeded" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
-          # Add custom success message if provided
-          if [[ -n "${{ inputs.stage-success-message }}" ]]; then
-            echo "${{ inputs.stage-success-message }}" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-          fi
           
           # Add custom success content if provided
           if [[ -n "${{ inputs.stage-success-content }}" ]]; then
