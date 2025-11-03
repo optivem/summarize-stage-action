@@ -4,6 +4,7 @@
 [![Example Usage](https://github.com/optivem/summarize-stage-action/actions/workflows/example.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/example.yml)
 
 [![GitHub release](https://img.shields.io/github/release/optivem/summarize-stage-action.svg)](https://github.com/optivem/summarize-stage-action/releases)
+[![GitHub](https://img.shields.io/github/license/optivem/summarize-stage-action)](LICENSE)
 
 A GitHub Action for generating comprehensive summaries of workflow stage results with customizable success content and emojis.
 
