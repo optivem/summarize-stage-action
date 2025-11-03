@@ -3,6 +3,8 @@
 [![CI](https://github.com/optivem/summarize-stage-action/actions/workflows/ci.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/ci.yml)
 [![Example Usage](https://github.com/optivem/summarize-stage-action/actions/workflows/example.yml/badge.svg)](https://github.com/optivem/summarize-stage-action/actions/workflows/example.yml)
 
+[![GitHub release](https://img.shields.io/github/release/optivem/summarize-stage-action.svg)](https://github.com/optivem/summarize-stage-action/releases)
+
 A GitHub Action for generating comprehensive summaries of workflow stage results with customizable success content and emojis.
 
 ## Features
